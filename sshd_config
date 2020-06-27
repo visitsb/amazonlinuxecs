@@ -4,6 +4,7 @@ ListenAddress 0.0.0.0
 LogLevel INFO
 LoginGraceTime 3m
 PermitRootLogin no
+PasswordAuthentication yes
 PermitEmptyPasswords no
 StrictModes yes
 MaxAuthTries 3

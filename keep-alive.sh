@@ -5,6 +5,14 @@
 /bin/echo "Starting GOSS health checks..."
 /bin/sh -c "cd / ; /usr/bin/sudo /usr/local/bin/goss serve --format json --cache 5s --listen-addr 0.0.0.0:8080 --endpoint /healthz " 1> /dev/null 2>&1 &
 
+/bin/echo "Printing contents of public key for '$(/usr/bin/whoami)'"
+/bin/cat ~/.ssh/authorized_keys
+/bin/echo
+
+/bin/echo "Printing contents of private key for '$(/usr/bin/whoami)'"
+/bin/cat ~/.ssh/id_rsa
+/bin/echo
+
 ########### SIGINT handler ############
 function _int() {
   /bin/echo "Stopping SSH daemon..."

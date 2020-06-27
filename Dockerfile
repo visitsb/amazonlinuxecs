@@ -54,4 +54,10 @@ STOPSIGNAL SIGTERM
 # User "ec2-user" is created with sudo rights (no password required to run sudo commands)
 # Password is "ec2-user"
 USER ec2-user
+WORKDIR /home/ec2-user
+# Generate a SSH key for ec2-user
+# https://unix.stackexchange.com/a/135090
+RUN /bin/cat /dev/zero | /usr/bin/ssh-keygen -N '' -C 'ec2-user' \
+ && /bin/mv .ssh/id_rsa.pub .ssh/authorized_keys
+
 CMD ["keep-alive.sh"]
